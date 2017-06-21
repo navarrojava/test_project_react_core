@@ -1,0 +1,7 @@
+{
+
+  "object-curly-spacing":0,
+
+
+  "extends":["airbnb"]
+}
