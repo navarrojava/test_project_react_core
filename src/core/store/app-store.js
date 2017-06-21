@@ -5,22 +5,13 @@ import ReducerCreator from '../reducers';
 
 /* eslint-env browser*/
 
-// TODO: Configure to use DevTools Extensions ...
-if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
+class StoreCreator {
 
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension());
-  }
-}
-
-class StoreCreator{
-
-  static buildAppStore(...recucers){
+  static buildAppStore(...reducers) {
     const initialState = {};
     const enhancers = [];
 
-    const rootReducer = ReducerCreator.buildAppReducer(...recucers);
+    const rootReducer = ReducerCreator.buildAppReducer(...reducers);
     const middleware = [
       thunk,
       routerMiddleware(history),

@@ -9,15 +9,6 @@ import ReducerCreator from '../reducers';
 
 /* eslint-env browser*/
 
-// TODO: Configure to use DevTools Extensions ...
-if (process.env.NODE_ENV === 'development') {
-  var devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
-
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension());
-  }
-}
-
 var StoreCreator = function () {
   function StoreCreator() {
     _classCallCheck(this, StoreCreator);

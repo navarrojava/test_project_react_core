@@ -55,7 +55,7 @@ export const getAllPosts = () => (dispatch) => {
   homeClient.getAllPostsClient().then((response) => {
     dispatch({
       type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
-      payload: { posts : response } ,
+      payload: { posts: response },
     });
   });
 };
