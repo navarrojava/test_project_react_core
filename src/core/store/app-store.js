@@ -7,7 +7,7 @@ import ReducerCreator from '../reducers';
 
 class StoreCreator {
 
-  static buildAppStore(...reducers) {
+   buildAppStore(...reducers) {
     const initialState = {};
     const enhancers = [];
 

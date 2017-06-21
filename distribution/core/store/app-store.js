@@ -14,7 +14,7 @@ var StoreCreator = function () {
     _classCallCheck(this, StoreCreator);
   }
 
-  _createClass(StoreCreator, null, [{
+  _createClass(StoreCreator, [{
     key: 'buildAppStore',
     value: function buildAppStore() {
       var initialState = {};

@@ -12,7 +12,7 @@ var ReducerCreator = function () {
     _classCallCheck(this, ReducerCreator);
   }
 
-  _createClass(ReducerCreator, null, [{
+  _createClass(ReducerCreator, [{
     key: 'buildAppReducer',
     value: function buildAppReducer() {
       return combineReducers.apply(undefined, arguments);

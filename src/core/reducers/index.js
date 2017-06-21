@@ -4,7 +4,8 @@
 import { combineReducers } from 'redux';
 
 export default class ReducerCreator {
-  static buildAppReducer(...reducers) {
+
+   buildAppReducer(...reducers) {
     return combineReducers(
       ...reducers,
     );
