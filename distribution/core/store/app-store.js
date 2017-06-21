@@ -20,7 +20,11 @@ var StoreCreator = function () {
       var initialState = {};
       var enhancers = [];
 
-      var rootReducer = ReducerCreator.buildAppReducer.apply(ReducerCreator, arguments);
+      for (var _len = arguments.length, reducers = Array(_len), _key = 0; _key < _len; _key++) {
+        reducers[_key] = arguments[_key];
+      }
+
+      var rootReducer = new (Function.prototype.bind.apply(ReducerCreator.buildAppReducer, [null].concat(reducers)))();
       var middleware = [thunk, routerMiddleware(history)];
 
       var composedEnhancers = compose.apply(undefined, [applyMiddleware.apply(undefined, middleware)].concat(enhancers));

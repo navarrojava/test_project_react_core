@@ -7,7 +7,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 import { combineReducers } from 'redux';
 
-var ReducerCreator = function () {
+export var ReducerCreator = function () {
   function ReducerCreator() {
     _classCallCheck(this, ReducerCreator);
   }
@@ -21,5 +21,3 @@ var ReducerCreator = function () {
 
   return ReducerCreator;
 }();
-
-export default ReducerCreator;
