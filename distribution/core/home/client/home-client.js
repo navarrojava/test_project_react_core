@@ -1,42 +1,62 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 import fetch from 'isomorphic-fetch';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com';
+var BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-class HomeClient {
-  constructor() {
-    this.getEntityUrl = () => BASE_URL;
+var HomeClient = function () {
+  function HomeClient() {
+    _classCallCheck(this, HomeClient);
 
-    this.getHeaders = () => ({
-      Accept: 'application/json',
-      'Content-Type': 'application/json; charset=utf-8'
-    });
+    this.getEntityUrl = function () {
+      return BASE_URL;
+    };
+
+    this.getHeaders = function () {
+      return {
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+      };
+    };
   }
 
-  /**
-   *
-   * @returns {Promise}
-   */
-  getAllPostsClient() {
-    return new Promise((resolve, reject) => {
-      fetch(`${this.getEntityUrl()}/posts`, {
-        method: 'GET',
-        headers: this.getHeaders()
-      }).then(response => {
-        if (response.status !== 200) {
-          reject(`${response.status} : ${response.statusText}`);
-        } else {
-          response.json().then(posts => resolve(posts)).catch(error => {
-            reject(error.message);
-          });
-        }
-      }).catch(error => {
-        reject(error.message);
+  _createClass(HomeClient, [{
+    key: 'getAllPostsClient',
+
+
+    /**
+     *
+     * @returns {Promise}
+     */
+    value: function getAllPostsClient() {
+      var _this = this;
+
+      return new Promise(function (resolve, reject) {
+        fetch(_this.getEntityUrl() + '/posts', {
+          method: 'GET',
+          headers: _this.getHeaders()
+        }).then(function (response) {
+          if (response.status !== 200) {
+            reject(response.status + ' : ' + response.statusText);
+          } else {
+            response.json().then(function (posts) {
+              return resolve(posts);
+            }).catch(function (error) {
+              reject(error.message);
+            });
+          }
+        }).catch(function (error) {
+          reject(error.message);
+        });
       });
-    });
-  }
+    }
+  }]);
 
-}
+  return HomeClient;
+}();
 
-const homeClient = new HomeClient();
+var homeClient = new HomeClient();
 
 export default homeClient;

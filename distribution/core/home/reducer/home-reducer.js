@@ -5,14 +5,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
  */
 import * as ACTION_TYPES from '../actions/home-action-types';
 
-const initialState = {
+var initialState = {
   count: 0,
   isIncrementing: false,
   isDecrementing: false,
   posts: []
 };
 
-export default ((state = initialState, action) => {
+export default (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
     case ACTION_TYPES.INCREMENT_REQUESTED:
       return _extends({}, state, {

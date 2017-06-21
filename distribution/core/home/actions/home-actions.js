@@ -5,55 +5,65 @@
 import homeClient from '../client/home-client';
 import * as ACTION_TYPES from "./home-action-types";
 
-export const increment = () => dispatch => {
-  dispatch({
-    type: ACTION_TYPES.INCREMENT_REQUESTED
-  });
+export var increment = function increment() {
+  return function (dispatch) {
+    dispatch({
+      type: ACTION_TYPES.INCREMENT_REQUESTED
+    });
 
-  dispatch({
-    type: ACTION_TYPES.INCREMENT
-  });
-};
-
-export const incrementAsync = () => dispatch => {
-  dispatch({
-    type: ACTION_TYPES.INCREMENT_REQUESTED
-  });
-
-  return setTimeout(() => {
     dispatch({
       type: ACTION_TYPES.INCREMENT
     });
-  }, 3000);
+  };
 };
 
-export const decrement = () => dispatch => {
-  dispatch({
-    type: ACTION_TYPES.DECREMENT_REQUESTED
-  });
+export var incrementAsync = function incrementAsync() {
+  return function (dispatch) {
+    dispatch({
+      type: ACTION_TYPES.INCREMENT_REQUESTED
+    });
 
-  dispatch({
-    type: ACTION_TYPES.DECREMENT
-  });
+    return setTimeout(function () {
+      dispatch({
+        type: ACTION_TYPES.INCREMENT
+      });
+    }, 3000);
+  };
 };
 
-export const decrementAsync = () => dispatch => {
-  dispatch({
-    type: ACTION_TYPES.DECREMENT_REQUESTED
-  });
+export var decrement = function decrement() {
+  return function (dispatch) {
+    dispatch({
+      type: ACTION_TYPES.DECREMENT_REQUESTED
+    });
 
-  return setTimeout(() => {
     dispatch({
       type: ACTION_TYPES.DECREMENT
     });
-  }, 3000);
+  };
 };
 
-export const getAllPosts = () => dispatch => {
-  homeClient.getAllPostsClient().then(response => {
+export var decrementAsync = function decrementAsync() {
+  return function (dispatch) {
     dispatch({
-      type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
-      payload: { posts: response }
+      type: ACTION_TYPES.DECREMENT_REQUESTED
     });
-  });
+
+    return setTimeout(function () {
+      dispatch({
+        type: ACTION_TYPES.DECREMENT
+      });
+    }, 3000);
+  };
+};
+
+export var getAllPosts = function getAllPosts() {
+  return function (dispatch) {
+    homeClient.getAllPostsClient().then(function (response) {
+      dispatch({
+        type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
+        payload: { posts: response }
+      });
+    });
+  };
 };
