@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import ReducerCreator from '../reducers';
+import  ReducerCreator from '../reducers';
 
 /* eslint-env browser*/
 
@@ -11,7 +11,7 @@ class StoreCreator {
     const initialState = {};
     const enhancers = [];
 
-    const rootReducer = ReducerCreator.buildAppReducer(...reducers);
+    const rootReducer = new ReducerCreator.buildAppReducer(...reducers);
     const middleware = [
       thunk,
       routerMiddleware(history),

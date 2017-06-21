@@ -3,7 +3,11 @@
  */
 import { combineReducers } from 'redux';
 
-export default class ReducerCreator {
+export  class ReducerCreator {
+
+  constructor(){
+
+  }
 
    buildAppReducer(...reducers) {
     return combineReducers(
