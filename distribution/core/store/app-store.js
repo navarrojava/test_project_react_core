@@ -5,15 +5,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import createHistory from 'history/createBrowserHistory';
 import ReducerCreator from '../reducers';
 
 /* eslint-env browser*/
-export var history = createHistory();
-
-var initialState = {};
-var enhancers = [];
-var middleware = [thunk, routerMiddleware(history)];
 
 // TODO: Configure to use DevTools Extensions ...
 if (process.env.NODE_ENV === 'development') {
@@ -24,8 +18,6 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-var composedEnhancers = compose.apply(undefined, [applyMiddleware.apply(undefined, middleware)].concat(enhancers));
-
 var StoreCreator = function () {
   function StoreCreator() {
     _classCallCheck(this, StoreCreator);
@@ -34,7 +26,13 @@ var StoreCreator = function () {
   _createClass(StoreCreator, null, [{
     key: 'buildAppStore',
     value: function buildAppStore() {
+      var initialState = {};
+      var enhancers = [];
+
       var rootReducer = ReducerCreator.buildAppReducer.apply(ReducerCreator, arguments);
+      var middleware = [thunk, routerMiddleware(history)];
+
+      var composedEnhancers = compose.apply(undefined, [applyMiddleware.apply(undefined, middleware)].concat(enhancers));
 
       return createStore(rootReducer, initialState, composedEnhancers);
     }

@@ -10,7 +10,8 @@
     "redux-thunk": "2.2.0"
   },
   "scripts": {
-    "build": "babel src --presets stage-0 --out-dir distribution"
+    "build": "babel src --presets stage-0 --out-dir distribution",
+    "publish": "git add . && git commit -m'increment ' && git push -u origin master"
   },
   "author": "Navarro Ferreira",
   "repository": {

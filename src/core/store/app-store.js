@@ -1,19 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import createHistory from 'history/createBrowserHistory';
 import ReducerCreator from '../reducers';
 
 /* eslint-env browser*/
-export const history = createHistory();
-
-const initialState = {};
-const enhancers = [];
-const middleware = [
-  thunk,
-  routerMiddleware(history),
-];
-
 
 // TODO: Configure to use DevTools Extensions ...
 if (process.env.NODE_ENV === 'development') {
@@ -24,15 +14,23 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers,
-);
-
 class StoreCreator{
 
   static buildAppStore(...recucers){
+    const initialState = {};
+    const enhancers = [];
+
     const rootReducer = ReducerCreator.buildAppReducer(...recucers);
+    const middleware = [
+      thunk,
+      routerMiddleware(history),
+    ];
+
+    const composedEnhancers = compose(
+      applyMiddleware(...middleware),
+      ...enhancers,
+    );
+
 
     return createStore(
       rootReducer,
