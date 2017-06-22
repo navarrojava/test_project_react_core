@@ -1,69 +1,114 @@
-/**
- * Created by NavarroFerreira on 6/20/2017.
- */
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(['exports', '../client/home-client', './home-action-types'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('../client/home-client'), require('./home-action-types'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.homeClient, global.homeActionTypes);
+    global.homeActions = mod.exports;
+  }
+})(this, function (exports, _homeClient, _homeActionTypes) {
+  'use strict';
 
-import homeClient from '../client/home-client';
-import * as ACTION_TYPES from './home-action-types';
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.getAllPosts = exports.decrementAsync = exports.decrement = exports.incrementAsync = exports.increment = undefined;
 
-export var increment = function increment() {
-  return function (dispatch) {
-    dispatch({
-      type: ACTION_TYPES.INCREMENT_REQUESTED
-    });
+  var _homeClient2 = _interopRequireDefault(_homeClient);
 
-    dispatch({
-      type: ACTION_TYPES.INCREMENT
-    });
-  };
-};
+  var ACTION_TYPES = _interopRequireWildcard(_homeActionTypes);
 
-export var incrementAsync = function incrementAsync() {
-  return function (dispatch) {
-    dispatch({
-      type: ACTION_TYPES.INCREMENT_REQUESTED
-    });
+  function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
+      return obj;
+    } else {
+      var newObj = {};
 
-    return setTimeout(function () {
+      if (obj != null) {
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+        }
+      }
+
+      newObj.default = obj;
+      return newObj;
+    }
+  }
+
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+
+  /**
+   * Created by NavarroFerreira on 6/20/2017.
+   */
+
+  var increment = exports.increment = function increment() {
+    return function (dispatch) {
+      dispatch({
+        type: ACTION_TYPES.INCREMENT_REQUESTED
+      });
+
       dispatch({
         type: ACTION_TYPES.INCREMENT
       });
-    }, 3000);
+    };
   };
-};
 
-export var decrement = function decrement() {
-  return function (dispatch) {
-    dispatch({
-      type: ACTION_TYPES.DECREMENT_REQUESTED
-    });
+  var incrementAsync = exports.incrementAsync = function incrementAsync() {
+    return function (dispatch) {
+      dispatch({
+        type: ACTION_TYPES.INCREMENT_REQUESTED
+      });
 
-    dispatch({
-      type: ACTION_TYPES.DECREMENT
-    });
+      return setTimeout(function () {
+        dispatch({
+          type: ACTION_TYPES.INCREMENT
+        });
+      }, 3000);
+    };
   };
-};
 
-export var decrementAsync = function decrementAsync() {
-  return function (dispatch) {
-    dispatch({
-      type: ACTION_TYPES.DECREMENT_REQUESTED
-    });
+  var decrement = exports.decrement = function decrement() {
+    return function (dispatch) {
+      dispatch({
+        type: ACTION_TYPES.DECREMENT_REQUESTED
+      });
 
-    return setTimeout(function () {
       dispatch({
         type: ACTION_TYPES.DECREMENT
       });
-    }, 3000);
+    };
   };
-};
 
-export var getAllPosts = function getAllPosts() {
-  return function (dispatch) {
-    homeClient.getAllPostsClient().then(function (response) {
+  var decrementAsync = exports.decrementAsync = function decrementAsync() {
+    return function (dispatch) {
       dispatch({
-        type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
-        payload: { posts: response }
+        type: ACTION_TYPES.DECREMENT_REQUESTED
       });
-    });
+
+      return setTimeout(function () {
+        dispatch({
+          type: ACTION_TYPES.DECREMENT
+        });
+      }, 3000);
+    };
   };
-};
+
+  var getAllPosts = exports.getAllPosts = function getAllPosts() {
+    return function (dispatch) {
+      _homeClient2.default.getAllPostsClient().then(function (response) {
+        dispatch({
+          type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
+          payload: { posts: response }
+        });
+      });
+    };
+  };
+});
