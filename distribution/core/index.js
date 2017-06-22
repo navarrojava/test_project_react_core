@@ -1,51 +1,12 @@
-'use strict';
+/**
+ * Created by NavarroFerreira on 6/21/2017.
+ */
+import _ReducerCreator from './reducers';
+export { _ReducerCreator as ReducerCreator };
+import _StoreCreator from './store';
+export { _StoreCreator as StoreCreator };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.homeClient = exports.StoreCreator = exports.ReducerCreator = undefined;
-
-var _homeActions = require('./home/actions/home-actions');
-
-Object.keys(_homeActions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _homeActions[key];
-    }
-  });
-});
-
-var _homeActionTypes = require('./home/actions/home-action-types');
-
-Object.keys(_homeActionTypes).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _homeActionTypes[key];
-    }
-  });
-});
-
-var _reducers = require('./reducers');
-
-var _reducers2 = _interopRequireDefault(_reducers);
-
-var _store = require('./store');
-
-var _store2 = _interopRequireDefault(_store);
-
-var _homeClient2 = require('./home/client/home-client');
-
-var _homeClient3 = _interopRequireDefault(_homeClient2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.ReducerCreator = _reducers2.default; /**
-                                              * Created by NavarroFerreira on 6/21/2017.
-                                              */
-
-exports.StoreCreator = _store2.default;
-exports.homeClient = _homeClient3.default;
+export * from './home/actions/home-actions';
+export * from './home/actions/home-action-types';
+import _homeClient from './home/client/home-client';
+export { _homeClient as homeClient };

@@ -1,27 +1,11 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getAllPosts = exports.decrementAsync = exports.decrement = exports.incrementAsync = exports.increment = undefined;
-
-var _homeClient = require('../client/home-client');
-
-var _homeClient2 = _interopRequireDefault(_homeClient);
-
-var _homeActionTypes = require('./home-action-types');
-
-var ACTION_TYPES = _interopRequireWildcard(_homeActionTypes);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /**
  * Created by NavarroFerreira on 6/20/2017.
  */
 
-var increment = exports.increment = function increment() {
+import homeClient from '../client/home-client';
+import * as ACTION_TYPES from './home-action-types';
+
+export var increment = function increment() {
   return function (dispatch) {
     dispatch({
       type: ACTION_TYPES.INCREMENT_REQUESTED
@@ -33,7 +17,7 @@ var increment = exports.increment = function increment() {
   };
 };
 
-var incrementAsync = exports.incrementAsync = function incrementAsync() {
+export var incrementAsync = function incrementAsync() {
   return function (dispatch) {
     dispatch({
       type: ACTION_TYPES.INCREMENT_REQUESTED
@@ -47,7 +31,7 @@ var incrementAsync = exports.incrementAsync = function incrementAsync() {
   };
 };
 
-var decrement = exports.decrement = function decrement() {
+export var decrement = function decrement() {
   return function (dispatch) {
     dispatch({
       type: ACTION_TYPES.DECREMENT_REQUESTED
@@ -59,7 +43,7 @@ var decrement = exports.decrement = function decrement() {
   };
 };
 
-var decrementAsync = exports.decrementAsync = function decrementAsync() {
+export var decrementAsync = function decrementAsync() {
   return function (dispatch) {
     dispatch({
       type: ACTION_TYPES.DECREMENT_REQUESTED
@@ -73,9 +57,9 @@ var decrementAsync = exports.decrementAsync = function decrementAsync() {
   };
 };
 
-var getAllPosts = exports.getAllPosts = function getAllPosts() {
+export var getAllPosts = function getAllPosts() {
   return function (dispatch) {
-    _homeClient2.default.getAllPostsClient().then(function (response) {
+    homeClient.getAllPostsClient().then(function (response) {
       dispatch({
         type: ACTION_TYPES.GET_ALL_POSTS_SUCCESS,
         payload: { posts: response }
