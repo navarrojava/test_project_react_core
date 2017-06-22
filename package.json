@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,"main": "distribution/index.js",
   "files": [
-    "distribution/"
+    "distribution/core"
   ],
 
   "dependencies": {
