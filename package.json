@@ -18,7 +18,12 @@
     "redux-thunk": "2.2.0"
   },
   "scripts": {
-    "build": "babel src --presets=latest,es2015,stage-0 --out-dir distribution",
+    "build": "npm run _crate-.babelrc-file && npm run _transpile && npm run _remove-.babelrc-file",
+    "_transpile": " babel src --presets=latest,es2015,stage-0 --out-dir distribution ",
+    "_crate-.babelrc-file": "echo  {\"presets\":[[\"latest\",{\"es2015\":{\"modules\":false}}]]}  > .babelrc",
+    "_remove-.babelrc-file": "DEL .babelrc",
+
+
 
     "publish": "git add . && git commit -m'increment' && git push -u origin master"
   },
