@@ -3,7 +3,7 @@
  */
 
 import homeClient from '../client/home-client';
-import * as ACTION_TYPES from "./home-action-types";
+import * as ACTION_TYPES from './home-action-types';
 
 
 

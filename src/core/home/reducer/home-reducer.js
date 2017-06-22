@@ -10,6 +10,12 @@ const initialState = {
   posts: [],
 };
 
+/**
+ *
+ * @param state
+ * @param action
+ * @returns {*}
+ */
 export default (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.INCREMENT_REQUESTED:
