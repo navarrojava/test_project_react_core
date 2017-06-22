@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import { ReducerCreator } from '../reducers';
+import ReducerCreator from '../reducers';
 /* eslint-env browser*/
 
-export class StoreCreator {
+class StoreCreator {
 
   /**
    *
@@ -42,3 +42,5 @@ export class StoreCreator {
     );
   }
 }
+
+export default StoreCreator;
