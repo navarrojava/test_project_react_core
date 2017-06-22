@@ -5,7 +5,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
  */
 import * as ACTION_TYPES from '../actions/home-action-types';
 
-var initialState = {
+const initialState = {
   count: 0,
   isIncrementing: false,
   isDecrementing: false,
@@ -18,10 +18,7 @@ var initialState = {
  * @param action
  * @returns {*}
  */
-export default (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments[1];
-
+export default ((state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.INCREMENT_REQUESTED:
       return _extends({}, state, {
