@@ -3,7 +3,7 @@
  */
 import _ReducerCreator from './reducers';
 export { _ReducerCreator as ReducerCreator };
-import _StoreCreator from './store';
+import _StoreCreator from './store/app-store';
 export { _StoreCreator as StoreCreator };
 
 export * from './home/actions/home-actions';
