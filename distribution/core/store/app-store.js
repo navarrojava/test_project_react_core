@@ -7,7 +7,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import ReducerCreator from '../reducers';
+import { ReducerCreator } from '../reducers';
 /* eslint-env browser*/
 
 export var StoreCreator = function () {
