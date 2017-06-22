@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import ReducerCreator from '../reducers';
 /* eslint-env browser*/
 
-class StoreCreator {
+export class StoreCreator {
 
   /**
    *
@@ -43,4 +43,3 @@ class StoreCreator {
   }
 }
 
-export default StoreCreator;

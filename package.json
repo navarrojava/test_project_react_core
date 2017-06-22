@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "npm run _crate-.babelrc-file && npm run _transpile && npm run _remove-.babelrc-file",
-    "_transpile": " babel src --presets=stage-0 --out-dir distribution ",
+    "_transpile": " babel src --presets stage-0 --out-dir distribution ",
     "_crate-.babelrc-file": "echo  {\"presets\":[[\"latest\",{\"es2015\":{\"modules\":false}}]]}  > .babelrc",
     "_remove-.babelrc-file": "DEL .babelrc",
 

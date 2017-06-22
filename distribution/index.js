@@ -3,9 +3,8 @@
  */
 import _ReducerCreator from './core/reducers';
 export { _ReducerCreator as ReducerCreator };
-import _StoreCreator from './core/store';
-export { _StoreCreator as StoreCreator };
 
+export { StoreCreator } from './core/store/app-store';
 export * from './core/home/actions/home-actions';
 export * from './core/home/actions/home-action-types';
 import _homeClient from './core/home/client/home-client';
