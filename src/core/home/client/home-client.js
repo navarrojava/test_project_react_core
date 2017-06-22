@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import fetch from 'fetch-everywhere';
 
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
