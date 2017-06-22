@@ -10,3 +10,5 @@ export * from './home/actions/home-actions';
 export * from './home/actions/home-action-types';
 import _homeClient from './home/client/home-client';
 export { _homeClient as homeClient };
+import _homeReducer from './home/reducer/home-reducer';
+export { _homeReducer as homeReducer };

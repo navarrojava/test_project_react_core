@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import home from '../../core/home/reducer/home-reducer';
 
 
-export default class ReducerCreator {
+export class ReducerCreator {
 
   /**
    *

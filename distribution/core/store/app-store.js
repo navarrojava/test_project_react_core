@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import ReducerCreator from '../reducers';
 /* eslint-env browser*/
 
-var StoreCreator = function () {
+export var StoreCreator = function () {
 
   /**
    *
@@ -51,5 +51,3 @@ var StoreCreator = function () {
 
   return StoreCreator;
 }();
-
-export default StoreCreator;

@@ -10,7 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 import { combineReducers } from 'redux';
 import home from '../../core/home/reducer/home-reducer';
 
-var ReducerCreator = function () {
+export var ReducerCreator = function () {
 
   /**
    *
@@ -40,5 +40,3 @@ var ReducerCreator = function () {
 
   return ReducerCreator;
 }();
-
-export default ReducerCreator;
